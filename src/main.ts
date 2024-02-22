@@ -6,6 +6,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
+          .addBasicAuth()
           .setTitle("Users")
           .setDescription("user routes...")
           .setVersion('1.0')

@@ -1,10 +1,15 @@
 import { Module } from '@nestjs/common';
 import { UsersModule } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseConfigService } from './db';
 
 @Module({
-  imports: [UsersModule, 
-    MongooseModule.forRoot('mongodb+srv://lokesh:connect@cluster0.jan7vci.mongodb.net/?retryWrites=true&w=majority')],
+  imports: [
+    ConfigModule.forRoot(),
+    UsersModule, 
+    MongooseModule.forRoot(process.env.DB), 
+    ],
   controllers: [],
   providers: [],
 })
